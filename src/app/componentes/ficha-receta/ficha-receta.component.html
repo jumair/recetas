@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{receta?.titulo}}</ion-card-title>
+    <ion-card-subtitle>{{receta?.descripcion}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <!--<img alt="{{receta?.titulo}}" src="../../../assets/images/{{receta?.foto}}" id="img-receta"/>-->
+  <ion-img
+    src="../../../assets/images/{{receta?.foto}}"
+    alt="{{receta?.titulo}}"
+    id="img-receta">
+  </ion-img>
+
+  <ion-card-content>
+    <p>{{receta?.preparacion}}</p>
+    <h2><ion-label color="danger">{{receta?.tipo}}</ion-label></h2>
+
+    <ion-card-title>Ingredientes :</ion-card-title>
+    @for (ingrediente of receta?.ingredientes; track $index) {
+      <!--<p>{{ingrediente | json}}<p>-->
+      <p><ion-label color="primary">{{ingrediente?.nombre}} - {{ingrediente?.cantidad}} - {{ingrediente?.unidad}}</ion-label></p>
+    }
+    
+    <!--
+    <p>{{receta?.ingredientes | json}}</p>
+    -->
+
+  </ion-card-content>
+</ion-card>

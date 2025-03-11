@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Seleccionar Recetas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">sel Recetas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  @for (receta of selRecetas; track $index) {
+    <app-select-receta [receta]="receta"></app-select-receta>
+  }
+
+  <ion-button (click)="generarSeleccion()">Generar Lista de la Compra</ion-button>
+</ion-content>
+
