@@ -30,7 +30,9 @@ export class GraficosPage implements OnInit {
   private colorTodos: string[] = ['rgb(69,177,223)', 'rgb(99,201,122)', 'rgb(193, 30, 141)', 'rgb(161, 203, 82)', 'rgb(128, 82, 203)'
     , 'rgb(223, 28, 28)', 'rgb(48, 9, 165)', 'rgb(24, 84, 25)', 'rgb(91, 86, 86)', 'rgb(159, 164, 19)', 'rgb(25, 112, 111)'];
   private colorTodosTrans: string[] = ['rgba(69,177,223,0.2)', 'rgba(99,201,122,0.2)', 'rgba(193, 30, 141,0.2)', 'rgba(161, 203, 82,0.2)', 'rgba(128, 82, 203,0.2)'
-      , 'rgba(223, 28, 28,0.2)', 'rgba(48, 9, 165,0.2)', 'rgba(24, 84, 25,0.2)', 'rgba(91, 86, 86,0.2)', 'rgba(159, 164, 19,0.2)', 'rgba(25, 112, 111,0.2)'];
+    , 'rgba(223, 28, 28,0.2)', 'rgba(48, 9, 165,0.2)', 'rgba(24, 84, 25,0.2)', 'rgba(91, 86, 86,0.2)', 'rgba(159, 164, 19,0.2)', 'rgba(25, 112, 111,0.2)'];
+  private colorTodosTransBorde: string[] = ['rgba(69,177,223,1)', 'rgba(99,201,122,1)', 'rgba(193, 30, 141,1)', 'rgba(161, 203, 82,1)', 'rgba(128, 82, 203,1)'
+    , 'rgba(223, 28, 28,1)', 'rgba(48, 9, 165,1)', 'rgba(24, 84, 25,1)', 'rgba(91, 86, 86,1)', 'rgba(159, 164, 19,1)', 'rgba(25, 112, 111,1)'];
   private etiIngre: string[] = [];
   private numIngre: number[] = [];
   private colIngre: string[] = [];
@@ -77,6 +79,8 @@ export class GraficosPage implements OnInit {
     this.dibuChart('bar', this.etiIngre, this.numIngre, this.colIngreTrans, "Cantidad de Ingredientes en gramos", "graphChartIngre");
     this.dibuChart('doughnut', this.etiIngre, this.numIngre, this.colIngre, "Cantidad de Ingredientes en gramos", "graphChartIngre1");
     this.dibuChart('line', this.etiIngre, this.numIngre, this.colIngre, "Cantidad de Ingredientes en gramos", "graphChartIngre2");
+
+    this.dibuChartBorde('bar', this.etiIngre, this.numIngre, this.colIngreTrans, this.colorTodosTransBorde, "Cantidad de Ingredientes en gramos", "graphChartIngre3");
   }
 
 
@@ -104,6 +108,32 @@ export class GraficosPage implements OnInit {
 
     const myChartPie = new Chart(idCanva, config);
   }
+
+  dibuChartBorde(figura: 'bar' | 'doughnut' | 'line' | 'pie', etis: string[], numeros: number[], colores: string[], bordes: string[], 
+    label: string, idCanva: string) {
+
+   const labels = etis;
+   const numbers = numeros;
+   const colors = colores;
+
+   const data = {
+     labels: labels,
+     datasets: [{
+         label: label,
+         data: numbers,
+         backgroundColor: colors,
+         borderColor: bordes,
+         borderWidth: 1
+     }]
+   };
+
+   const config: ChartConfiguration<typeof figura, number[], string> = {
+     type: figura,
+     data: data,
+   };
+
+   const myChartPie = new Chart(idCanva, config);
+ }
 
 
 

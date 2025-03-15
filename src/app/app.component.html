@@ -1,7 +1,13 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <!-- Si myFlag es true, muestra la lista de recetas -->
+  <ion-split-pane contentId="main-content" *ngIf="myFlag">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
+
+        <!-- If usuario y clave visualizo ion-app, sino pido usuario y clave -->
+        <!--<p *ngIf="!myFlag">Holasssss</p>-->
+
+        <!--<ion-list id="inbox-list" *ngIf="myFlag">-->
         <ion-list id="inbox-list">
           <ion-list-header>Recetas</ion-list-header>
           <ion-note>lista de la compra de Recetas</ion-note>
@@ -9,25 +15,64 @@
           @for (p of appPages; track p; let i = $index) {
             <ion-menu-toggle auto-hide="false">
               <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" color="warning"></ion-icon>
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
           }
         </ion-list>
 
+        <!--<ion-list id="labels-list" *ngIf="myFlag">-->
         <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           @for (label of labels; track label) {
             <ion-item lines="none" [routerLink]="[label.url]">
-              <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
+              <!--<ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>-->
+              <ion-icon aria-hidden="true" slot="start" ios="retaurant-outline" md="restaurant-sharp" color="success"></ion-icon>
               <ion-label>{{ label.title }}</ion-label>
             </ion-item>
           }
         </ion-list>
       </ion-content>
     </ion-menu>
+
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
+
+  <!-- Si myFlag es false, pide el nombre de usuario y la contraseña -->
+  
+  
+  <ion-content *ngIf="!myFlag">
+    <div id="login">
+
+      <ion-card id="login-card">
+
+        <h1>Lista de Recetas de la Compra</h1>
+
+        <ion-card-header>
+          <ion-card-title>Iniciar sesión</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <form (ngSubmit)="login()">
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input type="text" [(ngModel)]="username" name="username" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+            </ion-item>
+
+            <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+  </ion-content>
+
 </ion-app>
+
+

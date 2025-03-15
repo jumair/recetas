@@ -8,7 +8,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton,
  import { OverlayEventDetail } from '@ionic/core/components';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-menu',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
