@@ -14,9 +14,41 @@
     </ion-toolbar>
   </ion-header>
 
-  @for (ingrediente of verIngredientes; track $index) {
-    <!--<app-select-receta [receta]="receta"></app-select-receta>-->
-    <p>{{ingrediente.nombre}} - {{ingrediente.cantidad}} - {{ingrediente.unidad}}</p>
-  }
+  <ion-list [inset]="true">
+
+    @for (ingrediente of verIngredientes; track $index) {
+      <!--<app-select-receta [receta]="receta"></app-select-receta>-->
+      <!--<p>{{ingrediente.nombre}} - {{ingrediente.cantidad}} - {{ingrediente.unidad}}</p>-->
+
+      <ion-item [ngClass]="{ 'checked': ingredientesSeleccionados[$index] }">
+        <ion-checkbox slot="start" aria-label="Toggle task completion" (click)="cambiaColorCheckBox($index)"></ion-checkbox>
+        <ion-label aria-label="Task name">{{ingrediente.nombre}} - {{ingrediente.cantidad}} - {{ingrediente.unidad}}</ion-label>
+      </ion-item>
+
+      <!--
+      <ion-item-sliding>
+        <ion-item [button]="true">
+          <ion-avatar aria-hidden="true" slot="start">
+            <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>{{ingrediente.nombre}} - {{ingrediente.cantidad}} - {{ingrediente.unidad}}</ion-label>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="warning">
+            <ion-icon slot="icon-only" name="pin"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="tertiary">
+            <ion-icon slot="icon-only" name="share"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" expandable="true">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      -->
+
+    }
+
+  </ion-list>
 
 </ion-content>

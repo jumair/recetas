@@ -15,6 +15,13 @@
   </ion-header>
 
   <!--<p>Holaaaaaaaaaa</p>-->
+  <ion-toast
+    [isOpen]="isToastOpen"
+    message="No Hay Ingredientes para generar gráficos"
+    [duration]="2000"
+    position="middle"
+    (didDismiss)="setOpen(false)">
+  </ion-toast>
 
   <!--<div>-->
     <canvas id="graph"></canvas>

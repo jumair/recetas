@@ -1,0 +1,59 @@
+#div-receta {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* Para que los elementos se alineen desde el principio */
+    flex-wrap: wrap; /* Esto permitirá que los elementos se ajusten en pantallas más pequeñas */
+}
+
+#div-receta:hover {
+    background-color: rgba(202, 44, 147, 0.2);
+
+    ion-checkbox {
+        font-weight: bold;
+    }
+}
+
+ion-thumbnail {
+    --size: 200px;
+    --border-radius: 1rem;
+    flex-shrink: 0; /* Evita que el thumbnail se reduzca demasiado */
+    margin-right: 1rem; /* Espaciado entre los thumbnails */
+}
+
+ion-label {
+    font-weight: bold;
+}
+
+/* Alineación y espaciado para la clase 'compra' */
+.compra {
+    align-content: center;
+    padding-left: 1rem;
+    display: flex; /* Para asegurar que el contenido se alinee bien */
+    align-items: center;
+}
+
+/* Media Query para pantallas más pequeñas (móviles) */
+@media (max-width: 600px) {
+    #div-receta {
+        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+        align-items: center; /* Centra los elementos */
+    }
+
+    ion-thumbnail {
+        --size: 150px; /* Reduce el tamaño de la imagen en pantallas pequeñas */
+        margin-right: 0; /* Elimina el margen a la derecha */
+        margin-bottom: 1rem; /* Agrega espacio debajo de los thumbnails */
+    }
+
+    .compra {
+        padding-left: 0;
+        justify-content: center; /* Centra el contenido en pantallas más pequeñas */
+    }
+}
+
+/* Media Query para pantallas medianas (tabletas y dispositivos de mayor tamaño) */
+@media (max-width: 1024px) {
+    ion-thumbnail {
+        --size: 180px; /* Ajusta el tamaño en pantallas medianas */
+    }
+}

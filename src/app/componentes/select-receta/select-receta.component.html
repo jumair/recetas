@@ -4,10 +4,15 @@
     <ion-card-subtitle>{{receta?.descripcion}}</ion-card-subtitle>
   </ion-card-header>
 
-  <img alt="{{receta?.titulo}}" src="../../../assets/images/{{receta?.foto}}" id="img-receta"/>
-
   <ion-card-content>
-    <h2><ion-label color="danger">{{receta?.tipo}}</ion-label></h2>
-    <ion-checkbox id="{{receta?.titulo}}" class="compra">Agregar a la lista de Compra</ion-checkbox>
+    <div id="div-receta">
+      <!--<img alt="{{receta?.titulo}}" src="../../../assets/images/{{receta?.foto}}" id="img-receta"/>-->
+      <ion-thumbnail>
+        <img alt="{{receta?.titulo}}" src="../../../assets/images/{{receta?.foto}}" id="img-receta"/>
+      </ion-thumbnail>
+      <ion-checkbox id="{{receta?.titulo}}" class="compra">Agregar a la lista de Compra</ion-checkbox>
+    </div>
+
+    <ion-label color="danger">{{receta?.tipo}}</ion-label>
   </ion-card-content>
 </ion-card>

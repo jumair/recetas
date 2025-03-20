@@ -65,7 +65,15 @@
               <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
             </ion-item>
 
-            <ion-button expand="full" type="submit">Iniciar sesión</ion-button>
+            <ion-button expand="full" type="submit" id="present-alert">Iniciar sesión</ion-button>
+            <ion-alert
+              trigger="present-alert"
+              header="Iniciar sesión"
+              message="Usuario o contraseña incorrectos"
+              [buttons]="alertButtons"
+            >
+            </ion-alert>
+
           </form>
         </ion-card-content>
       </ion-card>

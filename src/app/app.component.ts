@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel,
-  IonRouterOutlet, IonRouterLink, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonInput } from '@ionic/angular/standalone';
+  IonRouterOutlet, IonRouterLink, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton,
+  IonInput, IonAlert } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 //import { mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
 
@@ -18,13 +19,14 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['app.component.scss'],
   imports: [RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel,
     IonRouterLink, IonRouterOutlet, CommonModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent,
-    IonButton, IonInput, FormsModule],
+    IonButton, IonInput, FormsModule, IonAlert],
 })
 export class AppComponent {
 
   username: string = '';
   password: string = '';
   public myFlag: boolean = false;
+  alertButtons = ['Cerrar'];
 
   public appPages = [
     { title: 'Inicio', url: '/inicio', icon: 'home' },
@@ -52,7 +54,8 @@ export class AppComponent {
     if (this.username === 'usuario' && this.password === 'contraseña') {
       this.myFlag = true;  // Cambia el valor de myFlag para mostrar el menú
     } else {
-      alert('Usuario o contraseña incorrectos');
+      //alert('Usuario o contraseña incorrectos');
+      //Este else es para que muestre el alert de usuario o contraseña incorrectos
     }
   }
 }

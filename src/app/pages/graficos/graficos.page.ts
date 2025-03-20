@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonToast } from '@ionic/angular/standalone';
 
 import Chart, { ChartConfiguration } from 'chart.js/auto';
 import { Ingrediente, IReceta } from 'src/app/interfaces/ireceta';
@@ -13,7 +13,7 @@ import { IngredientesService } from 'src/app/services/ingredientes.service';
   templateUrl: './graficos.page.html',
   styleUrls: ['./graficos.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonToast]
 })
 export class GraficosPage implements OnInit {
 
@@ -38,6 +38,8 @@ export class GraficosPage implements OnInit {
   private colIngre: string[] = [];
   private colIngreTrans: string[] = [];
 
+  public isToastOpen = false;
+
 
   constructor() { }
 
@@ -53,7 +55,8 @@ export class GraficosPage implements OnInit {
 
     if (this.ingredientes.length == 0) { 
       //console.log("No Hay Ingredientes");
-      alert("No Hay Ingredientes");
+      //alert("No Hay Ingredientes");
+      this.setOpen(true);
     } else {
       this.ingredientes.forEach(elemen => {
         this.etiIngre.push(elemen.nombre);
@@ -83,6 +86,10 @@ export class GraficosPage implements OnInit {
     this.dibuChartBorde('bar', this.etiIngre, this.numIngre, this.colIngreTrans, this.colorTodosTransBorde, "Cantidad de Ingredientes en gramos", "graphChartIngre3");
   }
 
+
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
 
 
   dibuChart(figura: 'bar' | 'doughnut' | 'line' | 'pie', etis: string[], numeros: number[], colores: string[],
