@@ -20,6 +20,18 @@ ion-thumbnail {
     margin-right: 1rem; /* Espaciado entre los thumbnails */
 }
 
+
+ion-checkbox {
+    --size: 32px;
+    --checkbox-background-checked: #6815ec;
+  }
+  
+ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid #6815ec;
+}
+
+
 ion-label {
     font-weight: bold;
 }

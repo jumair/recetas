@@ -34,7 +34,7 @@ export class AppComponent {
     { title: 'Seleccionar Recetas', url: '/sel-recetas', icon: 'checkbox' },
     { title: 'Lista Ingredientes', url: '/ver-ingredientes', icon: 'cart' },
     { title: 'Graficos', url: '/graficos', icon: 'bar-chart' },
-    { title: 'Login', url: '/error', icon: 'body' },
+    { title: 'Página error ver', url: '/error', icon: 'body' },
   ];
   
   public labels = [
