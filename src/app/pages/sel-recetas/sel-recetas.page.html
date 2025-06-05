@@ -19,6 +19,8 @@
     <app-select-receta [receta]="receta"></app-select-receta>
   }
 
+  <ion-input label="Número de personas" type="number" min="1" max="10" placeholder="1" [(ngModel)]="numpersonas"></ion-input>
   <ion-button (click)="generarSeleccion()">Generar Lista de la Compra</ion-button>
+
 </ion-content>
 

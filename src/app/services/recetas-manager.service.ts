@@ -7,7 +7,8 @@ import { IReceta } from '../interfaces/ireceta';
 })
 export class RecetasManagerService {
   //static URL = 'https://juanpink.github.io/recetas.json';
-  static URL = 'https://jumair.github.io/curriculum/recetas.json';
+  //static URL = 'https://jumair.github.io/curriculum/recetas.json';
+  static URL = 'https://jumair.github.io/curriculum/recetas_FIN.json';
 
   private httpClient = inject(HttpClient);
 

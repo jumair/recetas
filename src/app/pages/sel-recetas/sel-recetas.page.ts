@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonButton, ToastController } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonButton, ToastController, IonInput } from '@ionic/angular/standalone';
 import { IReceta } from 'src/app/interfaces/ireceta';
 import { Ingrediente } from 'src/app/interfaces/ireceta';
 import { RecetasManagerService } from 'src/app/services/recetas-manager.service';
@@ -14,7 +14,7 @@ import { IngredientesService } from 'src/app/services/ingredientes.service';
   styleUrls: ['./sel-recetas.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButtons, IonMenuButton, IonButton,
-             SelectRecetaComponent]
+             SelectRecetaComponent, IonInput]
 })
 export class SelRecetasPage implements OnInit {
   //public selRecetas : IReceta[] | undefined;
@@ -26,6 +26,8 @@ export class SelRecetasPage implements OnInit {
 
   public ingredientes : Ingrediente[] = [];
   ingredientesManager = inject(IngredientesService);
+
+  numpersonas: string = '';
 
   constructor(private toastController: ToastController) { }
 
@@ -60,6 +62,7 @@ export class SelRecetasPage implements OnInit {
     
     // Generar Array de ingredientes.
     this.ingredientes = [];
+    const numPersonas = parseInt(this.numpersonas);
 
     this.genRecetas.forEach(receta => {
       receta.ingredientes.forEach(ingrediente => {
@@ -67,8 +70,9 @@ export class SelRecetasPage implements OnInit {
         if (this.ingredientes.some(obj => obj.nombre === ingrediente.nombre)) 
           {
             const indice = this.ingredientes.findIndex(obj => obj.nombre === ingrediente.nombre);
-            this.ingredientes[indice].cantidad+=ingrediente.cantidad;
+            this.ingredientes[indice].cantidad+=ingrediente.cantidad * numPersonas;
           } else {
+            ingrediente.cantidad = ingrediente.cantidad * numPersonas;
             this.ingredientes.push(ingrediente);
           }
       });
